@@ -21,6 +21,12 @@ public class PlayerMovement : MonoBehaviour
     public float viewClampYMin;
     public float viewClampYMax;
 
+    [Header("Gravity")]
+    public float gravityAmount;
+    public float playerGravity;
+    public float gravityMin;
+
+
     private void Awake()
     {
         defaultInput = new DefaultInput();
@@ -63,6 +69,21 @@ public class PlayerMovement : MonoBehaviour
         var newMovementSpeed = new Vector3(horizontalSpeed, 0, verticalSpeed);
 
         newMovementSpeed = cameraHolder.TransformDirection(newMovementSpeed);
+
+        playerGravity -= gravityAmount * Time.deltaTime;
+
+        if(playerGravity > gravityMin)
+        {
+            playerGravity -= gravityAmount * Time.deltaTime;
+        }
+
+
+        if(playerGravity < -1 && characterController.isGrounded)
+        {
+            playerGravity = -1;
+        }
+
+        newMovementSpeed.y = playerGravity;
 
         characterController.Move(newMovementSpeed);
 
