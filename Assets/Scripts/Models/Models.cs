@@ -10,11 +10,18 @@ public class Models : MonoBehaviour
 
     public class PlayerSettingsModel
     {
+        [Header ("View Settings")]
         public float ViewXSensitivity;
         public float ViewYSensitivity;
 
         public bool ViewXInverted;
         public bool ViewYInverted;
+
+        [Header("Movement Settings")]
+        public float walkingForwardSpeed;
+        public float walkingStrafeSpeed;
+        public float walkingBackwardsSpeed;
+
     }
 
     #endregion

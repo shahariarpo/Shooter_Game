@@ -5,11 +5,13 @@ using static Models;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private CharacterController characterController;
     private DefaultInput defaultInput;
     public Vector2 input_Movement;
     public Vector2 input_View;
 
     private Vector3 newCameraRotation;
+    private Vector3 newCharacterRotation;
 
     [Header("References")]
     public Transform cameraHolder;
@@ -29,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
         defaultInput.Enable();
 
         newCameraRotation = cameraHolder.localRotation.eulerAngles;
+        newCharacterRotation = transform.localRotation.eulerAngles;
+
+        characterController = GetComponent<CharacterController>();
     }
 
     private void Update()
@@ -39,10 +44,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void CalculateView()
     {
-        newCameraRotation.x += playerSettings.ViewXSensitivity * input_View.y * Time.deltaTime;
+        newCharacterRotation.y += playerSettings.ViewXSensitivity * (playerSettings.ViewXInverted ? -input_View.x : input_View.x) * Time.deltaTime;
+        transform.localRotation = Quaternion.Euler(newCharacterRotation);
 
+        newCameraRotation.x += playerSettings.ViewXSensitivity * (playerSettings.ViewYInverted ? input_View.y: -input_View.y) * Time.deltaTime;
         newCameraRotation.x = Mathf.Clamp(newCameraRotation.x, viewClampYMin, viewClampYMax);
-
 
 
         cameraHolder.localRotation = Quaternion.Euler(newCameraRotation);
@@ -50,6 +56,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void CalculateMovements()
     {
+        var verticalSpeed = playerSettings.walkingForwardSpeed * input_Movement.y * Time.deltaTime;
+        var horizontalSpeed = playerSettings.walkingStrafeSpeed * input_Movement.x * Time.deltaTime;
+
+
+        var newMovementSpeed = new Vector3(horizontalSpeed, 0, verticalSpeed);
+
+        newMovementSpeed = cameraHolder.TransformDirection(newMovementSpeed);
+
+        characterController.Move(newMovementSpeed);
 
     }
 }
