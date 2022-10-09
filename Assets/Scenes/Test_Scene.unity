@@ -199,8 +199,13 @@ MonoBehaviour:
     walkingForwardSpeed: 4
     walkingStrafeSpeed: 3
     walkingBackwardsSpeed: 2
+    jumpingHeight: 5
+    jumpingFalloff: 0.095
   viewClampYMin: -80
   viewClampYMax: 70
+  gravityAmount: 0.12
+  gravityMin: -3.75
+  jumpingForce: {x: 0, y: 0, z: 0}
 --- !u!143 &437241661
 CharacterController:
   m_ObjectHideFlags: 0
@@ -291,7 +296,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437241659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 19.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -827,7 +832,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3086
+  m_Name: pb_Mesh24530
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

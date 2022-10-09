@@ -22,6 +22,10 @@ public class Models : MonoBehaviour
         public float walkingStrafeSpeed;
         public float walkingBackwardsSpeed;
 
+        [Header("Jumping")]
+        public float jumpingHeight;
+        public float jumpingFalloff;
+
     }
 
     #endregion

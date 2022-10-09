@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     public float gravityAmount;
     public float playerGravity;
     public float gravityMin;
+    public Vector3 jumpingForce;
+    private Vector3 jumpForceVelocity;
 
 
     private void Awake()
@@ -33,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
         defaultInput.Character.Movement.performed += e => input_Movement = e.ReadValue<Vector2>();
         defaultInput.Character.View.performed += e => input_View = e.ReadValue<Vector2>();
+        defaultInput.Character.Jump.performed += e => Jump();
 
         defaultInput.Enable();
 
@@ -46,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
     {
         CalculateView();
         CalculateMovements();
+        CalculateJump();
     }
 
     private void CalculateView()
@@ -72,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
 
         playerGravity -= gravityAmount * Time.deltaTime;
 
-        if(playerGravity > gravityMin)
+        if(playerGravity > gravityMin && jumpingForce.y > 0.1f)
         {
             playerGravity -= gravityAmount * Time.deltaTime;
         }
@@ -83,9 +87,31 @@ public class PlayerMovement : MonoBehaviour
             playerGravity = -1;
         }
 
+        if(jumpingForce.y > 0.1f)
+        {
+            playerGravity = 0;
+        }
+
         newMovementSpeed.y = playerGravity;
+        newMovementSpeed += jumpingForce * Time.deltaTime;
 
         characterController.Move(newMovementSpeed);
+
+    }
+
+    private void CalculateJump()
+    {
+        jumpingForce = Vector3.SmoothDamp(jumpingForce, Vector3.zero, ref jumpForceVelocity, playerSettings.jumpingFalloff);
+    }
+
+    private void Jump()
+    {
+        if (!characterController.isGrounded)
+        {
+            return;
+        }
+
+        jumpingForce = Vector3.up * playerSettings.jumpingHeight;
 
     }
 }
