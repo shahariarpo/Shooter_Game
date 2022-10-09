@@ -6,6 +6,14 @@ using System;
 public class Models : MonoBehaviour
 {
     #region - Player -
+
+    public enum PlayerStance
+    {
+        Stand,
+        Crouch,
+        Prone
+    }
+
     [Serializable]
 
     public class PlayerSettingsModel

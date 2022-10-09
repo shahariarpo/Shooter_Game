@@ -29,6 +29,15 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 jumpingForce;
     private Vector3 jumpForceVelocity;
 
+    [Header("Stance")]
+    public PlayerStance playerStance;
+    public float playerStanceSmoothing;
+    public float cameraStandHeight;
+    public float cameraCrouchHeight;
+    public float cameraProneHeight;
+    private float cameraHeight;
+    private float cameraHeightVelocity;
+
 
     private void Awake()
     {
@@ -44,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
         newCharacterRotation = transform.localRotation.eulerAngles;
 
         characterController = GetComponent<CharacterController>();
+
+        cameraHeight = cameraHolder.localPosition.y;
     }
 
     private void Update()
@@ -51,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         CalculateView();
         CalculateMovements();
         CalculateJump();
+        CalculateCameraHeight();
     }
 
     private void CalculateView()
@@ -98,6 +110,26 @@ public class PlayerMovement : MonoBehaviour
     private void CalculateJump()
     {
         jumpingForce = Vector3.SmoothDamp(jumpingForce, Vector3.zero, ref jumpForceVelocity, playerSettings.jumpingFalloff);
+    }
+
+    private void CalculateCameraHeight()
+    {
+
+        var stanceHeight = cameraStandHeight;
+
+        if (playerStance == PlayerStance.Crouch)
+        {
+            stanceHeight = cameraCrouchHeight;
+        }
+        else if (playerStance == PlayerStance.Prone)
+        {
+            stanceHeight = cameraProneHeight;
+        }
+
+
+        cameraHeight = Mathf.SmoothDamp(cameraHolder.localPosition.y, stanceHeight, ref cameraHeightVelocity, playerStanceSmoothing);
+
+        cameraHolder.localPosition = new Vector3(cameraHolder.localPosition.x, cameraHeight, cameraHolder.localPosition.z);
     }
 
     private void Jump()
