@@ -23,8 +23,9 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Gravity")]
     public float gravityAmount;
-    public float playerGravity;
+    private float playerGravity;
     public float gravityMin;
+
     public Vector3 jumpingForce;
     private Vector3 jumpForceVelocity;
 
@@ -76,20 +77,15 @@ public class PlayerMovement : MonoBehaviour
 
         playerGravity -= gravityAmount * Time.deltaTime;
 
-        if(playerGravity > gravityMin && jumpingForce.y > 0.1f)
+        if(playerGravity > gravityMin)
         {
             playerGravity -= gravityAmount * Time.deltaTime;
         }
 
 
-        if(playerGravity < -1 && characterController.isGrounded)
+        if(playerGravity < -0.1f && characterController.isGrounded)
         {
-            playerGravity = -1;
-        }
-
-        if(jumpingForce.y > 0.1f)
-        {
-            playerGravity = 0;
+            playerGravity = -0.1f;
         }
 
         newMovementSpeed.y = playerGravity;
@@ -112,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         jumpingForce = Vector3.up * playerSettings.jumpingHeight;
+        playerGravity = 0;
 
     }
 }
