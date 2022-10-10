@@ -1,3 +1,4 @@
+using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,17 +14,20 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 newCameraRotation;
     private Vector3 newCharacterRotation;
 
+
     [Header("References")]
     public Transform cameraHolder;
+    public Transform feetTransform;
 
     [Header("Settings")]
     public PlayerSettingsModel playerSettings;
     public float viewClampYMin;
     public float viewClampYMax;
+    public LayerMask playerMask;
 
     [Header("Gravity")]
     public float gravityAmount;
-    private float playerGravity;
+    public float playerGravity;
     public float gravityMin;
 
     public Vector3 jumpingForce;
@@ -37,9 +41,11 @@ public class PlayerMovement : MonoBehaviour
     public CharacterStance playerStandStance;
     public CharacterStance playerCrouchStance;
     public CharacterStance playerProneStance;
+    private float stanceCheckErrorMargin = 0.05f;
 
     private Vector3 stanceCapsuleCenterVelocity;
     private float stanceCapsuleHeightVelocity;
+
 
 
     private void Awake()
@@ -49,6 +55,9 @@ public class PlayerMovement : MonoBehaviour
         defaultInput.Character.Movement.performed += e => input_Movement = e.ReadValue<Vector2>();
         defaultInput.Character.View.performed += e => input_View = e.ReadValue<Vector2>();
         defaultInput.Character.Jump.performed += e => Jump();
+
+        defaultInput.Character.Crouch.performed += e => Crouch();
+        defaultInput.Character.Prone.performed += e => Prone();
 
         defaultInput.Enable();
 
@@ -98,9 +107,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if(playerGravity < -0.1f && characterController.isGrounded)
+        if(playerGravity < -0.01f && characterController.isGrounded)
         {
-            playerGravity = -0.1f;
+            playerGravity = -0.01f;
         }
 
         newMovementSpeed.y = playerGravity;
@@ -148,5 +157,42 @@ public class PlayerMovement : MonoBehaviour
         jumpingForce = Vector3.up * playerSettings.jumpingHeight;
         playerGravity = 0;
 
+    }
+
+    private void Crouch()
+    {
+        if(playerStance == PlayerStance.Crouch)
+        {
+            if (StanceCheck(playerStandStance.StanceCollider.height))
+            {
+                return;
+            }
+
+            playerStance = PlayerStance.Stand;
+            return;
+
+        }
+
+        if (StanceCheck(playerCrouchStance.StanceCollider.height))
+        {
+            return;
+        }
+
+        playerStance = PlayerStance.Crouch;
+    }
+
+    private void Prone()
+    {
+        playerStance = PlayerStance.Prone;
+    }
+
+    private bool StanceCheck(float stanceCheckHeight)
+    {
+        var Start = new Vector3(feetTransform.position.x, feetTransform.position.y + characterController.radius + stanceCheckErrorMargin, feetTransform.position.z);
+        var End = new Vector3(feetTransform.position.x, feetTransform.position.y - characterController.radius - stanceCheckErrorMargin + stanceCheckHeight, feetTransform.position.z);
+
+
+
+        return Physics.CheckCapsule(Start, End, characterController.radius, playerMask);
     }
 }
