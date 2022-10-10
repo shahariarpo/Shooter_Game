@@ -36,6 +36,14 @@ public class Models : MonoBehaviour
 
     }
 
+    [Serializable]
+
+    public class CharacterStance
+    {
+        public float CameraHeight;
+        public CapsuleCollider StanceCollider;
+    }
+
     #endregion
 
 }
