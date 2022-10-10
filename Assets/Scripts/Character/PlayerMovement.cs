@@ -7,8 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
     private CharacterController characterController;
     private DefaultInput defaultInput;
-    public Vector2 input_Movement;
-    public Vector2 input_View;
+    private Vector2 input_Movement;
+    private Vector2 input_View;
 
     private Vector3 newCameraRotation;
     private Vector3 newCharacterRotation;
@@ -38,9 +38,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterStance playerCrouchStance;
     public CharacterStance playerProneStance;
 
-    private Vector3 stanceCapsuleCenter;
     private Vector3 stanceCapsuleCenterVelocity;
-    private float stanceCapsuleHeight;
     private float stanceCapsuleHeightVelocity;
 
 
