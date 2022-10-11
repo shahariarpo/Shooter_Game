@@ -213,7 +213,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237742664}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.1845427, y: 3.075, z: -6.6756687}
+  m_LocalPosition: {x: -4.1845427, y: 3.099, z: -6.6756687}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2335,7 +2335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4088835466289365503, guid: 3afa445f1669f984c821c73c5305c2c6, type: 3}
       propertyPath: playerStanceSmoothing
-      value: 0.2
+      value: 0.125
       objectReference: {fileID: 0}
     - target: {fileID: 4088835466289365503, guid: 3afa445f1669f984c821c73c5305c2c6, type: 3}
       propertyPath: playerSettings.jumpingHeight
@@ -2361,6 +2361,14 @@ PrefabInstance:
       propertyPath: playerCrouchStance.StanceCollider
       value: 
       objectReference: {fileID: 1282642639}
+    - target: {fileID: 4088835466289365503, guid: 3afa445f1669f984c821c73c5305c2c6, type: 3}
+      propertyPath: playerSettings.runningStrafeSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088835466289365503, guid: 3afa445f1669f984c821c73c5305c2c6, type: 3}
+      propertyPath: playerSettings.runningForwardSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4088835466500844805, guid: 3afa445f1669f984c821c73c5305c2c6, type: 3}
       propertyPath: m_Layer
       value: 10

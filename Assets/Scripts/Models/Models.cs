@@ -29,6 +29,9 @@ public class Models : MonoBehaviour
         public float walkingForwardSpeed;
         public float walkingStrafeSpeed;
         public float walkingBackwardsSpeed;
+        public float runningForwardSpeed;
+        public float runningStrafeSpeed;
+
 
         [Header("Jumping")]
         public float jumpingHeight;
