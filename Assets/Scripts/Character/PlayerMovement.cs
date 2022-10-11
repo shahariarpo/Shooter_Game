@@ -13,11 +13,16 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 newCameraRotation;
     private Vector3 newCharacterRotation;
+    private bool isSprinting;
+
+    private Vector3 newMovementSpeed;
+    private Vector3 newMovementSpeedVelocity;
 
 
     [Header("References")]
     public Transform cameraHolder;
     public Transform feetTransform;
+
 
     [Header("Settings")]
     public PlayerSettingsModel playerSettings;
@@ -33,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 jumpingForce;
     private Vector3 jumpForceVelocity;
 
+
     [Header("Stance")]
     public PlayerStance playerStance;
     public float playerStanceSmoothing;
@@ -47,10 +53,6 @@ public class PlayerMovement : MonoBehaviour
     private float stanceCapsuleHeightVelocity;
 
 
-    private bool isSprinting;
-
-
-
     private void Awake()
     {
         defaultInput = new DefaultInput();
@@ -61,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
         defaultInput.Character.Crouch.performed += e => Crouch();
         defaultInput.Character.Prone.performed += e => Prone();
         defaultInput.Character.Sprint.performed += e => ToggleSprint();
+        defaultInput.Character.SprintReleased.performed += e => StopSprint();
         defaultInput.Enable();
 
         newCameraRotation = cameraHolder.localRotation.eulerAngles;
@@ -109,9 +112,30 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        var newMovementSpeed = new Vector3(horizontalSpeed * input_Movement.x * Time.deltaTime, 0, verticalSpeed * input_Movement.y * Time.deltaTime);
+        if (!characterController.isGrounded)
+        {
+            playerSettings.speedEffecter = playerSettings.fallingSpeedEffecter;
+        }
+        else if (playerStance == PlayerStance.Crouch)
+        {
+            playerSettings.speedEffecter = playerSettings.crouchSpeedEffecter;
+        }
+        else if (playerStance == PlayerStance.Prone)
+        {
+            playerSettings.speedEffecter = playerSettings.proneSpeedEffecter;
+        }
+        else
+        {
+            playerSettings.speedEffecter = 1;
+        }
 
-        newMovementSpeed = cameraHolder.TransformDirection(newMovementSpeed);
+        verticalSpeed *= playerSettings.speedEffecter;
+        horizontalSpeed *= playerSettings.speedEffecter;
+
+
+
+        newMovementSpeed = Vector3.SmoothDamp(newMovementSpeed, new Vector3(horizontalSpeed * input_Movement.x * Time.deltaTime, 0, verticalSpeed * input_Movement.y * Time.deltaTime), ref newMovementSpeedVelocity, characterController.isGrounded ? playerSettings.movementSmoothing : playerSettings.fallingSmooting);
+        var MovementSpeed = transform.TransformDirection(newMovementSpeed);
 
         playerGravity -= gravityAmount * Time.deltaTime;
 
@@ -126,10 +150,10 @@ public class PlayerMovement : MonoBehaviour
             playerGravity = -0.01f;
         }
 
-        newMovementSpeed.y = playerGravity;
-        newMovementSpeed += jumpingForce * Time.deltaTime;
+        MovementSpeed.y = playerGravity;
+        MovementSpeed += jumpingForce * Time.deltaTime;
 
-        characterController.Move(newMovementSpeed);
+        characterController.Move(MovementSpeed);
 
     }
 
@@ -170,6 +194,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (playerStance == PlayerStance.Crouch)
         {
+            if (StanceCheck(playerStandStance.StanceCollider.height))
+            {
+                return;
+            }
+
             playerStance = PlayerStance.Stand;
             return;
         }
@@ -223,5 +252,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         isSprinting = !isSprinting;
+    }
+
+    private void StopSprint()
+    {
+        isSprinting = false;
     }
 }

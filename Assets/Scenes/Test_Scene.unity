@@ -2350,9 +2350,17 @@ PrefabInstance:
       value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4088835466289365503, guid: 3afa445f1669f984c821c73c5305c2c6, type: 3}
+      propertyPath: playerSettings.fallingSmooting
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088835466289365503, guid: 3afa445f1669f984c821c73c5305c2c6, type: 3}
       propertyPath: playerProneStance.StanceCollider
       value: 
       objectReference: {fileID: 1282642638}
+    - target: {fileID: 4088835466289365503, guid: 3afa445f1669f984c821c73c5305c2c6, type: 3}
+      propertyPath: playerSettings.movementSmoothing
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4088835466289365503, guid: 3afa445f1669f984c821c73c5305c2c6, type: 3}
       propertyPath: playerStandStance.StanceCollider
       value: 
@@ -2362,12 +2370,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1282642639}
     - target: {fileID: 4088835466289365503, guid: 3afa445f1669f984c821c73c5305c2c6, type: 3}
+      propertyPath: playerSettings.proneSpeedEffecter
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088835466289365503, guid: 3afa445f1669f984c821c73c5305c2c6, type: 3}
       propertyPath: playerSettings.runningStrafeSpeed
-      value: 7
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088835466289365503, guid: 3afa445f1669f984c821c73c5305c2c6, type: 3}
+      propertyPath: playerSettings.walkingStrafeSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088835466289365503, guid: 3afa445f1669f984c821c73c5305c2c6, type: 3}
+      propertyPath: playerSettings.crouchSpeedEffecter
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4088835466289365503, guid: 3afa445f1669f984c821c73c5305c2c6, type: 3}
       propertyPath: playerSettings.runningForwardSpeed
-      value: 10
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088835466289365503, guid: 3afa445f1669f984c821c73c5305c2c6, type: 3}
+      propertyPath: playerSettings.walkingForwardSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088835466289365503, guid: 3afa445f1669f984c821c73c5305c2c6, type: 3}
+      propertyPath: playerSettings.fallingSpeedEffecter
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088835466289365503, guid: 3afa445f1669f984c821c73c5305c2c6, type: 3}
+      propertyPath: playerSettings.walkingBackwardsSpeed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4088835466500844805, guid: 3afa445f1669f984c821c73c5305c2c6, type: 3}
       propertyPath: m_Layer

@@ -31,12 +31,18 @@ public class Models : MonoBehaviour
         public float walkingBackwardsSpeed;
         public float runningForwardSpeed;
         public float runningStrafeSpeed;
-
+        public float movementSmoothing;
 
         [Header("Jumping")]
         public float jumpingHeight;
         public float jumpingFalloff;
+        public float fallingSmooting;
 
+        [Header("SpeedEffecter")]
+        public float speedEffecter = 1f;
+        public float crouchSpeedEffecter;
+        public float proneSpeedEffecter;
+        public float fallingSpeedEffecter;
     }
 
     [Serializable]
