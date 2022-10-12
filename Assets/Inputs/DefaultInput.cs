@@ -173,7 +173,7 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""2c17b210-2f62-4ed2-ae97-061acd2f1aa3"",
                     ""path"": ""<Keyboard>/ctrl"",
-                    ""interactions"": ""Hold(duration=0.01,pressPoint=0.001)"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Crouch"",
