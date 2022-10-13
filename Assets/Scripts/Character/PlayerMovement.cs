@@ -52,7 +52,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 stanceCapsuleCenterVelocity;
     private float stanceCapsuleHeightVelocity;
 
-
     private void Awake()
     {
         defaultInput = new DefaultInput();
