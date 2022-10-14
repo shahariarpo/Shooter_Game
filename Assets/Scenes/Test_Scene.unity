@@ -3724,8 +3724,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1255983043}
+  - component: {fileID: 1255983044}
   m_Layer: 10
-  m_Name: Hand Pivot
+  m_Name: Weapon Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3738,15 +3739,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255983042}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7, z: -0.047}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 543450653208713979}
-  m_Father: {fileID: 4088835465922898564}
-  m_RootOrder: 2
+  m_Father: {fileID: 4088835465860679170}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1255983044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255983042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28261a99310c7b84a884c16e128b2fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swaySmoothness: 8
+  swayMultiplier: 3
 --- !u!43 &1807223332
 Mesh:
   m_ObjectHideFlags: 0
@@ -4306,7 +4321,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149553414209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.134, y: -0.239, z: 0.154}
+  m_LocalPosition: {x: 0.15, y: -0.236, z: 0.127}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5026,6 +5041,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4088835466407477425}
+  - {fileID: 1255983043}
   m_Father: {fileID: 4088835465922898564}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5059,7 +5075,6 @@ Transform:
   m_Children:
   - {fileID: 543665002}
   - {fileID: 4088835465860679170}
-  - {fileID: 1255983043}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5129,6 +5144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa55a451f1793024ba542d90ef48f79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input_Movement: {x: 0, y: 0}
   cameraHolder: {fileID: 4088835465860679170}
   feetTransform: {fileID: 543665002}
   playerSettings:
@@ -5136,11 +5152,11 @@ MonoBehaviour:
     ViewYSensitivity: 15
     ViewXInverted: 0
     ViewYInverted: 0
-    walkingForwardSpeed: 4
-    walkingStrafeSpeed: 3
-    walkingBackwardsSpeed: 3
-    runningForwardSpeed: 6
-    runningStrafeSpeed: 4.5
+    walkingForwardSpeed: 4.5
+    walkingStrafeSpeed: 4
+    walkingBackwardsSpeed: 4
+    runningForwardSpeed: 7
+    runningStrafeSpeed: 5.5
     movementSmoothing: 0.1
     jumpingHeight: 7
     jumpingFalloff: 0.5
