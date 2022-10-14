@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private CharacterController characterController;
     private DefaultInput defaultInput;
-    private Vector2 input_Movement;
+    public Vector2 input_Movement;
     private Vector2 input_View;
 
     private Vector3 newCameraRotation;
