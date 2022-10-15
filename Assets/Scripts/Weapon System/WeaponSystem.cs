@@ -6,6 +6,11 @@ public class WeaponSystem : MonoBehaviour
 {
     private PlayerMovement characterController;
 
+    [Header("References")]
+    public Animator weaponAnimator;
+
+
+
     [Header("Sway Settings")]
     public WeaponSettingsModel settings;
     bool is_initialized;
@@ -39,6 +44,8 @@ public class WeaponSystem : MonoBehaviour
         {
             return;
         }
+
+        weaponAnimator.speed = characterController.weaponAnimSpeed;
 
         targetWeaponRotation.y += settings.swayAmount * (settings.swayXInverted ? -characterController.input_View.x : characterController.input_View.x) * Time.deltaTime;
         targetWeaponRotation.x += settings.swayAmount * (settings.swayYInverted ? characterController.input_View.y : -characterController.input_View.y) * Time.deltaTime;
