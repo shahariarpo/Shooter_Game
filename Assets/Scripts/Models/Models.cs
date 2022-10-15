@@ -55,4 +55,26 @@ public class Models : MonoBehaviour
 
     #endregion
 
+    #region - Weapons -
+
+    [Serializable]
+    public class WeaponSettingsModel
+    {
+        [Header("Sway")]
+        public float swayAmount;
+        public bool swayYInverted;
+        public bool swayXInverted;
+        public float swaySmoothing;
+        public float swayResetSmoothing;
+        public float swayClampX;
+        public float swayClampY;
+
+    }
+
+
+
+
+
+    #endregion
+
 }

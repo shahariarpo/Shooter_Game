@@ -226,7 +226,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24556
+  m_Name: pb_Mesh24560
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -551,7 +551,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24582
+  m_Name: pb_Mesh24592
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2214,6 +2214,81 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &1009214791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1009214792}
+  - component: {fileID: 1009214794}
+  m_Layer: 10
+  m_Name: Weapon Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1009214792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009214791}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4088835466407477425}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1009214794
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009214791}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 3
+  m_BackGroundColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.01
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 64
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_AllowMSAA: 0
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!1 &1154522826
 GameObject:
   m_ObjectHideFlags: 0
@@ -3725,7 +3800,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1255983043}
   - component: {fileID: 1255983044}
-  m_Layer: 10
+  - component: {fileID: 1255983045}
+  m_Layer: 6
   m_Name: Weapon Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3746,7 +3822,7 @@ Transform:
   m_Children:
   - {fileID: 543450653208713979}
   m_Father: {fileID: 4088835465860679170}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1255983044
 MonoBehaviour:
@@ -3761,14 +3837,81 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swaySmoothness: 8
-  swayMultiplier: 3
+  swayMultiplier: 3.5
+--- !u!114 &1255983045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255983042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726cdf9042efe444f9cf1d563f6eab03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  verticalCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.007019043
+      inSlope: 0.37047252
+      outSlope: 0.37047252
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.04526959
+    - serializedVersion: 3
+      time: 1
+      value: 0.007019043
+      inSlope: 0.43689966
+      outSlope: 0.43689966
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.032459795
+      outWeight: 0
+    m_PreInfinity: 1
+    m_PostInfinity: 1
+    m_RotationOrder: 4
+  horizontalCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: -0.00003778143
+      inSlope: 0.5111978
+      outSlope: 0.5111978
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.023433374
+    - serializedVersion: 3
+      time: 1
+      value: -0.00003838539
+      inSlope: 0.4431629
+      outSlope: 0.4431629
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.022229195
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 1
+    m_RotationOrder: 4
+  amplitude: 0.1
+  timeElapsed: 0
+  frequency: 0.2
+  rotationalAmplitude: 5
+  phaseShift: 30
+  horizontalAmplitude: 0.01
+  motionSpeed: 0.01
 --- !u!43 &1807223332
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24568
+  m_Name: pb_Mesh24578
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4243,7 +4386,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3613081489898282000}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Joint_3_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4259,7 +4402,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8130561106876415126}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_point2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4321,7 +4464,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149553414209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.15, y: -0.236, z: 0.127}
+  m_LocalPosition: {x: 0.15, y: -0.236, z: 0.169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4343,7 +4486,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2976946547324240616}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Joint_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4367,7 +4510,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4870124285619868885}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_thumb3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4383,7 +4526,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4142661325500906590}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_point3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4399,7 +4542,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450653208713979}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: arms@smg45
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4415,7 +4558,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1463094591173570720}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_pink2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4447,7 +4590,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3446329737775047653}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_middle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4479,7 +4622,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5678295964685998752}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_pink1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4565,7 +4708,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2598397397399712421}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Joint_3_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4581,7 +4724,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8822568701232548572}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Joint_3_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4605,7 +4748,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1553827552115637296}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Joint_3_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4752,7 +4895,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2832378480706717762}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_elbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4768,7 +4911,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1969332497003635215}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_arm_Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4816,7 +4959,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1579351388015694945}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_thumb1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4862,7 +5005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 474658652807152802}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_thumb2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4878,7 +5021,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3380769627034642200}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4911,7 +5054,7 @@ GameObject:
   - component: {fileID: 8088473112032988211}
   - component: {fileID: 8337055258670539412}
   - component: {fileID: 2459803882743677676}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4927,7 +5070,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8017585666178419641}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_palm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4990,7 +5133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4630910866245968649}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_elbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5040,8 +5183,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4088835466407477425}
   - {fileID: 1255983043}
+  - {fileID: 4088835466407477425}
   m_Father: {fileID: 4088835465922898564}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5232,9 +5375,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1009214792}
   m_Father: {fileID: 4088835465860679170}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4088835466407477428
 GameObject:
@@ -5285,7 +5429,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1079
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -5314,7 +5458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4811381062310939781}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_ring2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5346,7 +5490,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4740251478596784624}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_middle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5362,7 +5506,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4994423514378290426}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_middle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5378,7 +5522,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7391164245490346683}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_pink3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5436,7 +5580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2930539165265526229}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Joint_3_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5454,7 +5598,7 @@ GameObject:
   - component: {fileID: 1633355111621865500}
   - component: {fileID: 8434154937558151395}
   - component: {fileID: 184523720866456999}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: clip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5550,7 +5694,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5158377546786134002}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: smg45
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5639,7 +5783,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2769253647743108109}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_pink3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5673,7 +5817,7 @@ GameObject:
   - component: {fileID: 5119789548942166722}
   - component: {fileID: 2379216360089797615}
   - component: {fileID: 4414036579126859276}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: carrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5756,7 +5900,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4605163135947644753}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_ring2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5774,7 +5918,7 @@ GameObject:
   - component: {fileID: 3846070322403416785}
   - component: {fileID: 2260933186882565515}
   - component: {fileID: 4903979111562779086}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5806,7 +5950,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7754614346106297033}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Joint_3_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5822,7 +5966,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5190637687465047111}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Joint_3_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5838,7 +5982,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5062346502488681821}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_palm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5878,7 +6022,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6545567740433121085}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_pink2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5894,7 +6038,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5465936956992273547}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_point3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5912,7 +6056,7 @@ GameObject:
   - component: {fileID: 4955052626664667212}
   - component: {fileID: 671026538732824450}
   - component: {fileID: 2566805412912448668}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5947,7 +6091,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 515645261621799768}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_arm_Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5963,7 +6107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3175390519537485114}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Joint_3_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5979,7 +6123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6574778316769228764}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_middle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6043,7 +6187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2595734679134336580}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6059,7 +6203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 288090757352949486}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Joint_3_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6091,7 +6235,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7917523589720329488}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_point1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6107,7 +6251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6034640274085865788}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_wrist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6123,7 +6267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4699542797104977021}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_point2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6139,7 +6283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7496337200967620164}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_point1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6171,7 +6315,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 519281343507393115}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_thumb3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6203,7 +6347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2546293846893956523}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_ring3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6219,7 +6363,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8815562639942062160}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_ring1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6266,7 +6410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1155119660872041189}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_thumb1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6298,7 +6442,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7870929523646634654}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_middle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6314,7 +6458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6610532281056810475}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_pink1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6347,7 +6491,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6777814697295115520}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_middle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6378,7 +6522,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 77225253880350181}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: L_wrist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6542,7 +6686,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8825669734908877533}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_thumb2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6558,7 +6702,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3997102184266470026}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_ring1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6605,7 +6749,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 22668695874475461}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: R_ring3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6638,7 +6782,7 @@ GameObject:
   m_Component:
   - component: {fileID: 271720238559979215}
   - component: {fileID: 8469790400654055619}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: armmesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6656,7 +6800,7 @@ GameObject:
   - component: {fileID: 8211213668349242566}
   - component: {fileID: 5825599617027129793}
   - component: {fileID: 99321636902453386}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
