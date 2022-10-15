@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private CharacterController characterController;
     private DefaultInput defaultInput;
+    [HideInInspector]
     public Vector2 input_Movement;
     [HideInInspector]
     public Vector2 input_View;

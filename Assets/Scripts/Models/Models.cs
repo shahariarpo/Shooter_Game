@@ -60,7 +60,7 @@ public class Models : MonoBehaviour
     [Serializable]
     public class WeaponSettingsModel
     {
-        [Header("Sway")]
+        [Header("Weapon Sway")]
         public float swayAmount;
         public bool swayYInverted;
         public bool swayXInverted;
@@ -68,6 +68,14 @@ public class Models : MonoBehaviour
         public float swayResetSmoothing;
         public float swayClampX;
         public float swayClampY;
+
+
+        [Header("Weapon Movement Sway")]
+        public float movementSwayX;
+        public float movementSwayY;
+        public bool movementSwayYInverted;
+        public bool movementSwayXInverted;
+        public float movementSwaySmoothing;
 
     }
 

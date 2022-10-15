@@ -3800,7 +3800,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1255983043}
   - component: {fileID: 1255983044}
-  - component: {fileID: 1255983045}
   m_Layer: 6
   m_Name: Weapon Holder
   m_TagString: Untagged
@@ -3833,78 +3832,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1255983042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28261a99310c7b84a884c16e128b2fb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ef8c8a38214d8c47a35ec37f50d4537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swaySmoothness: 8
-  swayMultiplier: 3.5
---- !u!114 &1255983045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1255983042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 726cdf9042efe444f9cf1d563f6eab03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  verticalCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.007019043
-      inSlope: 0.37047252
-      outSlope: 0.37047252
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.04526959
-    - serializedVersion: 3
-      time: 1
-      value: 0.007019043
-      inSlope: 0.43689966
-      outSlope: 0.43689966
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.032459795
-      outWeight: 0
-    m_PreInfinity: 1
-    m_PostInfinity: 1
-    m_RotationOrder: 4
-  horizontalCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: -0.00003778143
-      inSlope: 0.5111978
-      outSlope: 0.5111978
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.023433374
-    - serializedVersion: 3
-      time: 1
-      value: -0.00003838539
-      inSlope: 0.4431629
-      outSlope: 0.4431629
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.022229195
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 1
-    m_RotationOrder: 4
-  amplitude: 0.1
-  timeElapsed: 0
-  frequency: 0.2
-  rotationalAmplitude: 5
-  phaseShift: 30
-  horizontalAmplitude: 0.01
-  motionSpeed: 0.01
+  settings:
+    swayAmount: 2.5
+    swayYInverted: 0
+    swayXInverted: 0
+    swaySmoothing: 0.1
+    swayResetSmoothing: 0.1
+    swayClampX: 14
+    swayClampY: 14
+    movementSwayX: 5
+    movementSwayY: 2.5
+    movementSwayYInverted: 1
+    movementSwayXInverted: 1
+    movementSwaySmoothing: 0.5
 --- !u!43 &1807223332
 Mesh:
   m_ObjectHideFlags: 0
@@ -5288,6 +5231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input_Movement: {x: 0, y: 0}
+  input_View: {x: 0, y: 0}
   cameraHolder: {fileID: 4088835465860679170}
   feetTransform: {fileID: 543665002}
   playerSettings:
@@ -5328,6 +5272,7 @@ MonoBehaviour:
   playerProneStance:
     CameraHeight: -0.5
     StanceCollider: {fileID: 4088835465922898567}
+  currentWeapon: {fileID: 1255983044}
 --- !u!136 &4088835465922898683
 CapsuleCollider:
   m_ObjectHideFlags: 0
