@@ -45,6 +45,13 @@ public class WeaponSystem : MonoBehaviour
             return;
         }
 
+        CalculateWeaponRotation();
+        SetWeaponAnimations();
+    }
+
+
+    private void CalculateWeaponRotation()
+    {
         weaponAnimator.speed = characterController.weaponAnimSpeed;
 
         targetWeaponRotation.y += settings.swayAmount * (settings.swayXInverted ? -characterController.input_View.x : characterController.input_View.x) * Time.deltaTime;
@@ -67,4 +74,8 @@ public class WeaponSystem : MonoBehaviour
         transform.localRotation = Quaternion.Euler(newWeaponRotation + newWeaponMovementRotation);
     }
 
+    private void SetWeaponAnimations()
+    {
+        weaponAnimator.SetBool("is_Sprinting", characterController.isSprinting);
+    }
 }

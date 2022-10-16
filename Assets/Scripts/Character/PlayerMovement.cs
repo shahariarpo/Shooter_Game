@@ -15,7 +15,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 newCameraRotation;
     private Vector3 newCharacterRotation;
-    private bool isSprinting;
+    [HideInInspector]
+    public bool isSprinting;
 
     private Vector3 newMovementSpeed;
     private Vector3 newMovementSpeedVelocity;
