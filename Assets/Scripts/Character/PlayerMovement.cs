@@ -6,6 +6,8 @@ using static Models;
 
 public class PlayerMovement : MonoBehaviour
 {
+    #region - Variables and References -
+
     private CharacterController characterController;
     private DefaultInput defaultInput;
     [HideInInspector]
@@ -32,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     public float viewClampYMin;
     public float viewClampYMax;
     public LayerMask playerMask;
+    public LayerMask groundMask;
 
     [Header("Gravity")]
     public float gravityAmount;
@@ -59,6 +62,13 @@ public class PlayerMovement : MonoBehaviour
     public WeaponSystem currentWeapon;
 
     public float weaponAnimSpeed;
+
+    [HideInInspector]
+    public bool isGrounded;
+    [HideInInspector]
+    public bool isFalling;
+
+    #endregion
 
     private void Awake()
     {
@@ -88,11 +98,31 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        SetIsGrounded();
+        SetIsFalling();
+
         CalculateView();
         CalculateMovements();
         CalculateJump();
         CalculateStance();
     }
+
+    #region - Is Falling / Is Grounded - 
+
+    private void SetIsGrounded()
+    {
+        Debug.Log(isGrounded);
+        isGrounded = Physics.CheckSphere(feetTransform.position, playerSettings.isGroundedRadius, groundMask);
+    }
+
+    private void SetIsFalling()
+    {
+        isFalling = (!isGrounded && characterController.velocity.magnitude > playerSettings.isFallingSpeed);
+    }
+
+    #endregion
+
+    #region - Player Movement -
 
     private void CalculateView()
     {
@@ -124,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if (!characterController.isGrounded)
+        if (!isGrounded)
         {
             playerSettings.speedEffecter = playerSettings.fallingSpeedEffecter;
         }
@@ -154,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        newMovementSpeed = Vector3.SmoothDamp(newMovementSpeed, new Vector3(horizontalSpeed * input_Movement.x * Time.deltaTime, 0, verticalSpeed * input_Movement.y * Time.deltaTime), ref newMovementSpeedVelocity, characterController.isGrounded ? playerSettings.movementSmoothing : playerSettings.fallingSmooting);
+        newMovementSpeed = Vector3.SmoothDamp(newMovementSpeed, new Vector3(horizontalSpeed * input_Movement.x * Time.deltaTime, 0, verticalSpeed * input_Movement.y * Time.deltaTime), ref newMovementSpeedVelocity, isGrounded ? playerSettings.movementSmoothing : playerSettings.fallingSmooting);
         var MovementSpeed = transform.TransformDirection(newMovementSpeed);
 
         playerGravity -= gravityAmount * Time.deltaTime;
@@ -165,7 +195,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if(playerGravity < -0.01f && characterController.isGrounded)
+        if(playerGravity < -0.01f && isGrounded)
         {
             playerGravity = -0.01f;
         }
@@ -182,6 +212,24 @@ public class PlayerMovement : MonoBehaviour
         jumpingForce = Vector3.SmoothDamp(jumpingForce, Vector3.zero, ref jumpForceVelocity, playerSettings.jumpingFalloff);
     }
 
+    private void ToggleSprint()
+    {
+        if (input_Movement.y <= 0.2f)
+        {
+            isSprinting = false;
+        }
+
+        isSprinting = !isSprinting;
+    }
+
+    private void StopSprint()
+    {
+        isSprinting = false;
+    }
+
+    #endregion
+
+    #region - Player Stance - 
     private void CalculateStance()
     {
 
@@ -207,7 +255,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (!characterController.isGrounded || playerStance == PlayerStance.Prone)
+        if (!isGrounded || playerStance == PlayerStance.Prone)
         {
             return;
         }
@@ -264,18 +312,17 @@ public class PlayerMovement : MonoBehaviour
         return Physics.CheckCapsule(Start, End, characterController.radius, playerMask);
     }
 
-    private void ToggleSprint()
-    {
-        if (input_Movement.y <= 0.2f)
-        {
-            isSprinting = false;
-        }
+    #endregion
 
-        isSprinting = !isSprinting;
+    #region - Gizmos -
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(feetTransform.position, playerSettings.isGroundedRadius);
     }
 
-    private void StopSprint()
-    {
-        isSprinting = false;
-    }
+
+
+    #endregion+
+
 }

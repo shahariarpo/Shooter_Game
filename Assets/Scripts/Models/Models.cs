@@ -43,6 +43,10 @@ public class Models : MonoBehaviour
         public float crouchSpeedEffecter;
         public float proneSpeedEffecter;
         public float fallingSpeedEffecter;
+
+        [Header("Is Grounded / Falling")]
+        public float isGroundedRadius;
+        public float isFallingSpeed;
     }
 
     [Serializable]

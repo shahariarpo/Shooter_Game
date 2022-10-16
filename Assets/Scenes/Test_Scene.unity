@@ -5209,7 +5209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4088835465922898686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.849, y: 1, z: 0.763}
+  m_LocalPosition: {x: 0.849, y: 2.119, z: 0.763}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5307,9 +5307,14 @@ MonoBehaviour:
     crouchSpeedEffecter: 0.5
     proneSpeedEffecter: 0.2
     fallingSpeedEffecter: 0.4
+    isGroundedRadius: 0.2
+    isFallingSpeed: 1
   viewClampYMin: -70
   viewClampYMax: 80
   playerMask:
+    serializedVersion: 2
+    m_Bits: 55
+  groundMask:
     serializedVersion: 2
     m_Bits: 55
   gravityAmount: 0.03
@@ -5329,6 +5334,8 @@ MonoBehaviour:
     StanceCollider: {fileID: 4088835465922898567}
   currentWeapon: {fileID: 1255983044}
   weaponAnimSpeed: 0
+  isGrounded: 0
+  isFalling: 0
 --- !u!136 &4088835465922898683
 CapsuleCollider:
   m_ObjectHideFlags: 0
