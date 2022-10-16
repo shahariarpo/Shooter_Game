@@ -5286,6 +5286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input_Movement: {x: 0, y: 0}
   input_View: {x: 0, y: 0}
+  isSprinting: 0
   cameraHolder: {fileID: 4088835465860679170}
   feetTransform: {fileID: 543665002}
   playerSettings:
