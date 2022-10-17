@@ -111,7 +111,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void SetIsGrounded()
     {
-        Debug.Log(isGrounded);
         isGrounded = Physics.CheckSphere(feetTransform.position, playerSettings.isGroundedRadius, groundMask);
     }
 
@@ -272,6 +271,7 @@ public class PlayerMovement : MonoBehaviour
         }
         jumpingForce = Vector3.up * playerSettings.jumpingHeight;
         playerGravity = 0;
+        currentWeapon.TriggerJump();
 
     }
 
