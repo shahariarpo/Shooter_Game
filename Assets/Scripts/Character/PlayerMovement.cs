@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (currentWeapon)
         {
-            currentWeapon.Initialize(this); 
+            currentWeapon.Initialize(this);
         }
     }
 
@@ -128,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
         newCharacterRotation.y += playerSettings.ViewXSensitivity * (playerSettings.ViewXInverted ? -input_View.x : input_View.x) * Time.deltaTime;
         transform.localRotation = Quaternion.Euler(newCharacterRotation);
 
-        newCameraRotation.x += playerSettings.ViewXSensitivity * (playerSettings.ViewYInverted ? input_View.y: -input_View.y) * Time.deltaTime;
+        newCameraRotation.x += playerSettings.ViewXSensitivity * (playerSettings.ViewYInverted ? input_View.y : -input_View.y) * Time.deltaTime;
         newCameraRotation.x = Mathf.Clamp(newCameraRotation.x, viewClampYMin, viewClampYMax);
 
 
@@ -137,12 +137,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void CalculateMovements()
     {
-        
-        if(input_Movement.y <= 0.2f)
+
+        if (input_Movement.y <= 0.2f)
         {
             isSprinting = false;
         }
-        
+
         var verticalSpeed = playerSettings.walkingForwardSpeed;
         var horizontalSpeed = playerSettings.walkingStrafeSpeed;
 
@@ -188,13 +188,13 @@ public class PlayerMovement : MonoBehaviour
 
         playerGravity -= gravityAmount * Time.deltaTime;
 
-        if(playerGravity > gravityMin)
+        if (playerGravity > gravityMin)
         {
             playerGravity -= gravityAmount * Time.deltaTime;
         }
 
 
-        if(playerGravity < -0.01f && isGrounded)
+        if (playerGravity < -0.01f && isGrounded)
         {
             playerGravity = -0.01f;
         }
@@ -216,6 +216,15 @@ public class PlayerMovement : MonoBehaviour
         if (input_Movement.y <= 0.2f)
         {
             isSprinting = false;
+            return;
+        }
+
+        var currentStance = playerStandStance;
+
+        if (playerStance == PlayerStance.Crouch || playerStance == PlayerStance.Prone)
+        {
+            isSprinting = false;
+            return;
         }
 
         isSprinting = !isSprinting;
