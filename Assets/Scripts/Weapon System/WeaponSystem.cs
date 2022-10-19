@@ -27,6 +27,15 @@ public class WeaponSystem : MonoBehaviour
     private bool isGroundedTrigger;
     private float fallingDelay;
 
+    [Header("Weapon Sway")]
+    public Transform weaponSwayObject;
+    public float swayAmountA;
+    public float swayAmountB;
+    public float swayScale;
+    public float swayLerpSpeed;
+    public float swayTime;
+    public Vector3 swayPosition;
+
 
     private void Start()
     {
@@ -50,6 +59,7 @@ public class WeaponSystem : MonoBehaviour
 
         CalculateWeaponRotation();
         SetWeaponAnimations();
+        CalculateWeaponSway();
     }
 
     public void TriggerJump()
@@ -107,5 +117,23 @@ public class WeaponSystem : MonoBehaviour
 
         weaponAnimator.SetBool("is_Sprinting", characterController.isSprinting);
         weaponAnimator.SetFloat("WeaponAnimationSpeed", characterController.weaponAnimSpeed);
+    }
+
+    private void CalculateWeaponSway()
+    {
+        var targetPosition = LissajousCurve(swayTime, swayAmountA, swayAmountB) / swayScale;
+
+        swayPosition = Vector3.Lerp(swayPosition, targetPosition, Time.smoothDeltaTime * swayLerpSpeed);
+        weaponSwayObject.localPosition = swayPosition;
+        swayTime += Time.deltaTime;
+        if ( swayTime > 6.3f)
+        {
+            swayTime = 0f;
+        }
+    }
+
+    private Vector3 LissajousCurve(float Time, float A, float B)
+    {
+        return new Vector3(Mathf.Sin(Time), A * Mathf.Sin(B * Time + Mathf.PI));
     }
 }
